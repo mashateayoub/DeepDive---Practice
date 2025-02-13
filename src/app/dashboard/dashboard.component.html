@@ -1,0 +1,11 @@
+<div class="dashboard">
+  <app-dashboard-item iconSrc="status.png" title="Server Status">
+    <app-server-status [currentStatus]="currentStatus"></app-server-status>
+  </app-dashboard-item>
+  <app-dashboard-item iconSrc="globe.png" title="Traffic">
+    <app-traffic [dummyTrafficData]="dummyTrafficData" [maxTraffic]="maxTraffic"></app-traffic>
+  </app-dashboard-item>
+  <app-dashboard-item iconSrc="list.png" title="Support Tickets">
+    <app-support-tickets></app-support-tickets>
+  </app-dashboard-item>
+</div>

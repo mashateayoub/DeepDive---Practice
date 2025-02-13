@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  imports: [HeaderComponent, DashboardComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
@@ -13,7 +16,7 @@ export class AppComponent {
     },
     {
       id: 'd2',
-      value: 260,
+      value: 200,
     },
     {
       id: 'd3',
@@ -37,5 +40,5 @@ export class AppComponent {
     },
   ];
   maxTraffic = Math.max(...this.dummyTrafficData.map((data) => data.value));
-  currentStatus = 'online';
+  currentStatus = 'offline';
 }

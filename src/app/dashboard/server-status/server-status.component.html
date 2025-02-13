@@ -1,0 +1,10 @@
+<div>
+  <p *ngIf="currentStatus === 'online'">Servers are online</p>
+  <p *ngIf="currentStatus === 'online'">All systems are operational.</p>
+  <p *ngIf="currentStatus === 'offline'">Servers are offline</p>
+  <p *ngIf="currentStatus === 'offline'">Functionality should be restored soon.</p>
+  <ng-container *ngIf="currentStatus !== 'online' && currentStatus !== 'offline'">
+    <p>Server status is unknown</p>
+    <p>Fetching server status failed.</p>
+  </ng-container>
+</div>
