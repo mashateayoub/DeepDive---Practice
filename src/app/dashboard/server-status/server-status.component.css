@@ -1,6 +1,4 @@
-/* New CSS file for ServerStatusComponent */
-
-#status {
+:host {
   display: block;
   width: 15rem;
 }
@@ -22,6 +20,11 @@
 
 .status-unknown p:first-of-type {
   color: grey;
+}
+
+p:last-of-type {
+  margin: 0;
+  color: #625e67;
 }
 
 @keyframes pulse {
