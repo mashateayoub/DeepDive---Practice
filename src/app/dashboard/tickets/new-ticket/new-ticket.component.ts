@@ -1,4 +1,4 @@
-import { Component, ElementRef, viewChild } from '@angular/core';
+import { Component, ElementRef, output, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from '../../../shared/control/control.component';
@@ -8,20 +8,20 @@ import { ControlComponent } from '../../../shared/control/control.component';
   standalone: true,
   imports: [ButtonComponent, ControlComponent, FormsModule],
   templateUrl: './new-ticket.component.html',
-  styleUrls: ['./new-ticket.component.css']
+  styleUrls: ['./new-ticket.component.css'],
 })
 export class NewTicketComponent {
   // @ViewChild('form') form?: ElementRef<HTMLFormElement>;
 
+  add = output<{ title: string; request: string }>();
+
   // use ViewChild signal function to access the form
   private form = viewChild<ElementRef<HTMLFormElement>>('form');
 
-
   onSubmit(titleInput: string, requestInput: string) {
+    const title = titleInput;
+    const request = requestInput;
 
-      const title = titleInput;
-      const request = requestInput;
-    
     if (!title.trim() || !request.trim()) {
       return;
     }
@@ -29,7 +29,9 @@ export class NewTicketComponent {
     console.log('Form submitted:', { title, request });
     // this.form?.nativeElement.reset();
 
-    this.form()?.nativeElement.reset();
+    // the output will emit the ticket object
+    this.add.emit({ title, request });
 
+    this.form()?.nativeElement.reset();
   }
 }
